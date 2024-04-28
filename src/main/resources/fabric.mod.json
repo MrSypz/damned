@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "damned",
+	"version": "${version}",
+	"name": "Damned",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Sypztep"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/damned/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"sypztep.damned.Damned"
+		]
+	},
+	"mixins": [
+		"damned.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.10",
+		"minecraft": "~1.20.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
