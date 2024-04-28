@@ -16,7 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"sypztep.damned.Damned"
+          "sypztep.damned.common.Damned"
+		],
+		"client": [
+			"sypztep.damned.client.DamnedClient"
 		]
 	},
 	"mixins": [
