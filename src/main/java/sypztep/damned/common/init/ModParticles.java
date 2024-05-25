@@ -2,32 +2,26 @@ package sypztep.damned.common.init;
 
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import sypztep.damned.client.particle.ShockwaveParticle;
+import sypztep.damned.client.particle.ShockwaveHorizontalParticle;
+import sypztep.damned.client.particle.ShockwaveVerticleParticle;
 import sypztep.damned.common.Damned;
 
-import java.util.function.BiConsumer;
-
-public interface ModParticles {
-    ParticleFactoryRegistry factory = ParticleFactoryRegistry.getInstance();
-    SimpleParticleType SHOCKWAVE = FabricParticleTypes.simple(true);
-    static void init() {
-        initParticles(bind(Registries.PARTICLE_TYPE));
+public class ModParticles {
+    public static final SimpleParticleType SHOCKWAVE_VERTICAL = FabricParticleTypes.simple(true);
+    public static final SimpleParticleType SHOCKWAVE_HORIZONTAL = FabricParticleTypes.simple(true);
+    public static void init() {
+        registerParticle(SHOCKWAVE_VERTICAL,"shockwave_vertical");
+        registerParticle(SHOCKWAVE_HORIZONTAL,"shockwave_horizontal");
     }
-
-    private static void initParticles(BiConsumer<ParticleType<?>, Identifier> registry) {
-        registry.accept(SHOCKWAVE, Damned.id("shockwave"));
+    private static void registerParticle(SimpleParticleType simpleParticleType,String name) {
+        Registry.register(Registries.PARTICLE_TYPE, Damned.id(name),simpleParticleType);
     }
-    static void registerFactories() {
-        factory.register(SHOCKWAVE, ShockwaveParticle.Factory::new);
-    }
-    private static <T> BiConsumer<T, Identifier> bind(Registry<? super T> registry) {
-        return (t, id) -> {
-            Registry.register(registry, id, t);
-        };
+    public static void registerFactor() {
+        ParticleFactoryRegistry particleRegistry = ParticleFactoryRegistry.getInstance();
+        particleRegistry.register(ModParticles.SHOCKWAVE_VERTICAL, ShockwaveVerticleParticle.Factory::new);
+        particleRegistry.register(ModParticles.SHOCKWAVE_HORIZONTAL, ShockwaveHorizontalParticle.Factory::new);
     }
 }

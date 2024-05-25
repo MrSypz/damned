@@ -8,12 +8,13 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.Vec3d;
 
-public abstract class VerticalStripeParticle extends SpriteBillboardParticle {
+public abstract class VerticalSpriteBillboardParticle extends SpriteBillboardParticle {
     protected final SpriteProvider spriteProvider;
-    private final Vec3d initialDirection;
-    private float height,width;
-    protected VerticalStripeParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider, double velocityX, double velocityY, double velocityZ) {
-        super(world, x, y , z, 0.0, 0.0, 0.0);
+    protected final Vec3d initialDirection;
+    private float height, width;
+
+    protected VerticalSpriteBillboardParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider, double velocityX, double velocityY, double velocityZ) {
+        super(world, x, y, z, 0.0, 0.0, 0.0);
         this.spriteProvider = spriteProvider;
         this.maxAge = 10;
         this.scale = 4.5f;
@@ -38,7 +39,6 @@ public abstract class VerticalStripeParticle extends SpriteBillboardParticle {
     @Override
     public void buildGeometry(VertexConsumer buffer, Camera camera, float ticks) {
         float size = Math.max(height, width) / 2.0f;
-
         Vec3d particlePos = new Vec3d(this.x, this.y, this.z).subtract(camera.getPos());
 
         float offsetX = size * (float) initialDirection.x;
@@ -71,6 +71,7 @@ public abstract class VerticalStripeParticle extends SpriteBillboardParticle {
         buffer.vertex(minX, minY, minZ).texture(maxU, minV).color(red, green, blue, alpha).light(light).next();
         buffer.vertex(minX, maxY, minZ).texture(maxU, maxV).color(red, green, blue, alpha).light(light).next();
     }
+
     @Override
     public void tick() {
         super.tick();
