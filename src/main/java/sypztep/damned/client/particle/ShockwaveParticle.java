@@ -7,7 +7,7 @@ import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.SimpleParticleType;
 
-public class ShockwaveParticle extends VerticleStripeParticle {
+public class ShockwaveParticle extends VerticalStripeParticle {
     protected ShockwaveParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider, double velocityX, double velocityY, double velocityZ) {
         super(world, x, y, z, spriteProvider, velocityX, velocityY, velocityZ);
     }

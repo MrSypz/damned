@@ -17,6 +17,6 @@ public class Damned implements ModInitializer {
 	public void onInitialize() {
 		ModParticles.init();
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("Dammed Initalize!");
 	}
 }

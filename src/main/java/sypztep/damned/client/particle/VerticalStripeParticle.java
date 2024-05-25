@@ -1,18 +1,18 @@
 package sypztep.damned.client.particle;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.SpriteBillboardParticle;
+import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.Vec3d;
 
-public abstract class VerticleStripeParticle extends SpriteBillboardParticle {
+public abstract class VerticalStripeParticle extends SpriteBillboardParticle {
     protected final SpriteProvider spriteProvider;
     private final Vec3d initialDirection;
     private float height,width;
-
-    protected VerticleStripeParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider, double velocityX, double velocityY, double velocityZ) {
+    protected VerticalStripeParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider, double velocityX, double velocityY, double velocityZ) {
         super(world, x, y , z, 0.0, 0.0, 0.0);
         this.spriteProvider = spriteProvider;
         this.maxAge = 10;
@@ -22,9 +22,8 @@ public abstract class VerticleStripeParticle extends SpriteBillboardParticle {
         this.velocityY = velocityY;
         this.velocityZ = velocityZ;
         this.setSpriteForAge(this.spriteProvider);
-        //call calculate a lock focus part
-        float cameraYaw = MinecraftClient.getInstance().player.getYaw();  // Assuming player object is accessible
-        double yawRad = Math.toRadians(cameraYaw + 90); //PS + 90 to fact to player camera
+        float cameraYaw = MinecraftClient.getInstance().player.getYaw();
+        double yawRad = Math.toRadians(cameraYaw + 90); //PS: + 90 to fact to player camera
         this.initialDirection = new Vec3d(-Math.sin(yawRad), 0, Math.cos(yawRad));
     }
 
