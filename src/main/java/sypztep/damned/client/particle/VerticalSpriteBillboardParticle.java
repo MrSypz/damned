@@ -61,15 +61,15 @@ public abstract class VerticalSpriteBillboardParticle extends SpriteBillboardPar
         int light = getBrightness(ticks);
 
         // Render particle geometry
-        buffer.vertex(minX, maxY, minZ).texture(maxU, maxV).color(red, green, blue, alpha).light(light).next();
-        buffer.vertex(minX, minY, minZ).texture(maxU, minV).color(red, green, blue, alpha).light(light).next();
-        buffer.vertex(maxX, minY, maxZ).texture(minU, minV).color(red, green, blue, alpha).light(light).next();
-        buffer.vertex(maxX, maxY, maxZ).texture(minU, maxV).color(red, green, blue, alpha).light(light).next();
+        buffer.vertex(minX, maxY, minZ).texture(maxU, maxV).color(red, green, blue, alpha).light(light);
+        buffer.vertex(minX, minY, minZ).texture(maxU, minV).color(red, green, blue, alpha).light(light);
+        buffer.vertex(maxX, minY, maxZ).texture(minU, minV).color(red, green, blue, alpha).light(light);
+        buffer.vertex(maxX, maxY, maxZ).texture(minU, maxV).color(red, green, blue, alpha).light(light);
 
-        buffer.vertex(maxX, maxY, maxZ).texture(minU, maxV).color(red, green, blue, alpha).light(light).next();
-        buffer.vertex(maxX, minY, maxZ).texture(minU, minV).color(red, green, blue, alpha).light(light).next();
-        buffer.vertex(minX, minY, minZ).texture(maxU, minV).color(red, green, blue, alpha).light(light).next();
-        buffer.vertex(minX, maxY, minZ).texture(maxU, maxV).color(red, green, blue, alpha).light(light).next();
+        buffer.vertex(maxX, maxY, maxZ).texture(minU, maxV).color(red, green, blue, alpha).light(light);
+        buffer.vertex(maxX, minY, maxZ).texture(minU, minV).color(red, green, blue, alpha).light(light);
+        buffer.vertex(minX, minY, minZ).texture(maxU, minV).color(red, green, blue, alpha).light(light);
+        buffer.vertex(minX, maxY, minZ).texture(maxU, maxV).color(red, green, blue, alpha).light(light);
     }
 
     @Override

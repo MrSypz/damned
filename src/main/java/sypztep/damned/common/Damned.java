@@ -11,7 +11,7 @@ public class Damned implements ModInitializer {
 	public static final String MODID = "damned";
     public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 	public static Identifier id (String path) {
-		return new Identifier(MODID,path);
+		return Identifier.of(MODID,path);
 	}
 	@Override
 	public void onInitialize() {
